@@ -47,7 +47,8 @@ namespace Biblioteca.Models
                             query = bc.Emprestimos.Where(e => e.NomeUsuario.Contains(filtro.Filtro));
                         break;
 
-                        case "Titulo":
+                        case "Livro":
+                            query = bc.Emprestimos.Where(e => e.Livro.Autor.Contains(filtro.Filtro));
                             query = bc.Emprestimos.Where(e => e.Livro.Titulo.Contains(filtro.Filtro));
                         break;
 
@@ -63,10 +64,12 @@ namespace Biblioteca.Models
                     query = bc.Emprestimos;
                     
                 }
-
-                return bc.Emprestimos.Include(e => e.Livro).ToList();
-                
+               
+                //ordenação padrão
+                return query.OrderBy(e => e.DataDevolucao).ToList();
             }
+
+            
 
         }
 
