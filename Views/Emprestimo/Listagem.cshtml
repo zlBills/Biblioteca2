@@ -1,4 +1,4 @@
-@model ICollection<Emprestimo>
+@model List<Emprestimo>
 @{
     ViewData["Title"] = "Listagem de Empréstimos";
 }
@@ -46,6 +46,27 @@
                     <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
                 </tr>
                 }
+
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="index.php?pagina=0" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <?php for($i=0; %i<num_paginas;$i++){ ?>
+                    <li><a href="index.php?pagina=<?php echo %i; ?>"><?php echo %i+1; ?></a></li>
+                    <?php } ?>
+
+                    
+
+                    <li>
+                      <a class="page-link" href="index.php?pagina=<php echo $result1-1; ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
             </tbody>
         </table>
 
